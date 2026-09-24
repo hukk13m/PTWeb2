@@ -1,0 +1,23 @@
+<table border="1" class="outer-table">
+  <ng-container *ngFor="let c of categories; let i = index">
+    <tr class="category-title">
+      <td colspan="5">{{ i + 1 }} - {{ c.CustomerTypeName }}</td>
+    </tr>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Age</th>
+      <th>#</th>
+    </tr>
+    <tr *ngFor="let p of c.Customer">
+      <td>{{ p.Id }}</td>
+      <td>{{ p.Name }}</td>
+      <td>{{ p.Email }}</td>
+      <td>{{ p.Age }}</td>
+      <td class="avatar-cell">
+        <img [src]="p.Image" [alt]="p.Name" />
+      </td>
+    </tr>
+  </ng-container>
+</table>

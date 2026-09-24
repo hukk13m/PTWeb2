@@ -1,0 +1,46 @@
+<table border="1" class="outer-table">
+  <thead>
+    <tr>
+      <th>Ma Danh Muc</th>
+      <th>Ten Danh Muc</th>
+    </tr>
+  </thead>
+  <tbody>
+    <ng-container *ngFor="let c of categories">
+      <tr class="category-row">
+        <td>{{ c.Cateid }}</td>
+        <td>{{ c.CateName }}</td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <table border="1" class="inner-table">
+            <thead>
+              <tr>
+                <th>Ma San Pham</th>
+                <th>Ten San Pham</th>
+                <th>Gia San Pham</th>
+                <th>Picture</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let p of c.Products">
+                <td>{{ p.ProductId }}</td>
+                <td>{{ p.ProductName }}</td>
+                <td>{{ p.Price }}</td>
+                <td>
+                  <img
+                    [src]="p.Image"
+                    alt="{{ p.ProductName }}"
+                    width="80"
+                    height="80"
+                    style="object-fit: contain"
+                  />
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+    </ng-container>
+  </tbody>
+</table>
