@@ -1,0 +1,6 @@
+table, tr, td, th {border: 1px solid black; border-collapse: collapse; padding: 10px;}
+tbody :nth-child(odd) {background-color: #ffea00;}
+tbody :nth-child(even) {background-color: #01f605;}
+
+
+
