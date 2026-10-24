@@ -1,0 +1,46 @@
+<section class="heading">
+  <div>
+    <p class="eyebrow">QUẢN LÝ NỘI DUNG</p>
+    <h1>Danh sách Fashion</h1>
+    <p class="muted">Fashion mới nhất được hiển thị trước.</p>
+  </div>
+  <a class="button primary" routerLink="/new">Thêm Fashion</a>
+</section>
+
+@if (error()) {
+  <p class="notice error">{{ error() }}</p>
+}
+@if (loading()) {
+  <p class="notice">Đang tải dữ liệu...</p>
+} @else if (fashions().length === 0) {
+  <div class="empty">Chưa có Fashion nào. Hãy thêm Fashion đầu tiên.</div>
+} @else {
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Thumbnail</th>
+          <th>Tiêu đề</th>
+          <th>Style</th>
+          <th>Ngày tạo</th>
+          <th>Thao tác</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (fashion of fashions(); track fashion._id) {
+          <tr>
+            <td><img class="thumbnail" [src]="fashion.fashion_image" [alt]="fashion.fashion_subject" /></td>
+            <td class="subject">{{ fashion.fashion_subject }}</td>
+            <td><span class="style-tag">{{ fashion.style }}</span></td>
+            <td>{{ fashion.created_at | date: 'medium' }}</td>
+            <td class="actions">
+              <a [routerLink]="['/', fashion._id]">Chi tiết</a>
+              <a [routerLink]="['/', fashion._id, 'edit']">Sửa</a>
+              <button class="text-button danger" type="button" (click)="deleteFashion(fashion)">Xóa</button>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+}

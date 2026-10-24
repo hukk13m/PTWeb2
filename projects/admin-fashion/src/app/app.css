@@ -1,0 +1,33 @@
+:host {
+  display: block;
+  min-height: 100vh;
+  background: #f4f5f7;
+  color: #20242a;
+  font-family: Arial, sans-serif;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px max(24px, calc((100% - 1120px) / 2));
+  background: #17191d;
+}
+
+.brand,
+.add-link {
+  color: #fff;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.add-link {
+  padding: 10px 14px;
+  border-radius: 6px;
+  background: #b73535;
+}
+
+.page {
+  width: min(1120px, calc(100% - 32px));
+  margin: 32px auto;
+}

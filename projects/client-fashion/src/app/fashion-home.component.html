@@ -1,0 +1,47 @@
+<section class="hero">
+  <p class="eyebrow">THE FASHION EDIT</p>
+  <h1>Style, stories &amp; inspiration</h1>
+  <p class="intro">Khám phá những câu chuyện thời trang mới nhất theo phong cách bạn yêu thích.</p>
+
+  <label class="filter-label" for="style-filter">Lọc theo Style</label>
+  <select
+    id="style-filter"
+    [value]="selectedStyle()"
+    (change)="onStyleChange($event)"
+  >
+    <option value="">Tất cả Style</option>
+    @for (style of styles(); track style) {
+      <option [value]="style">{{ style }}</option>
+    }
+  </select>
+</section>
+
+@if (error()) {
+  <p class="notice error">{{ error() }}</p>
+}
+@if (loading()) {
+  <p class="notice">Đang tải bài viết...</p>
+} @else if (groups().length === 0) {
+  <p class="notice">Chưa có Fashion phù hợp.</p>
+} @else {
+  @for (group of groups(); track group[0]) {
+    <section class="style-section">
+      <div class="section-title">
+        <h2>{{ group[0] }}</h2>
+        <span>{{ group[1].length }} STORIES</span>
+      </div>
+      <div class="fashion-grid">
+        @for (fashion of group[1]; track fashion._id) {
+          <a class="fashion-card" [routerLink]="['/fashion', fashion._id]">
+            <img [src]="fashion.fashion_image" [alt]="fashion.fashion_subject" />
+            <div class="card-copy">
+              <span class="card-style">{{ fashion.style }}</span>
+              <h3>{{ fashion.fashion_subject }}</h3>
+              <span class="read-more">Đọc câu chuyện →</span>
+            </div>
+          </a>
+        }
+      </div>
+    </section>
+  }
+}

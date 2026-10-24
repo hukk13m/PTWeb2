@@ -1,0 +1,72 @@
+<a class="back" routerLink="/">← Quay lại danh sách</a>
+<section class="panel">
+  <p class="eyebrow">FASHION</p>
+  <h1>{{ editingId() ? 'Chỉnh sửa Fashion' : 'Thêm Fashion mới' }}</h1>
+
+  @if (error()) {
+    <p class="notice error">{{ error() }}</p>
+  }
+
+  <form #fashionForm="ngForm" (ngSubmit)="save()">
+    <label for="subject">Tiêu đề</label>
+    <input
+      id="subject"
+      name="fashion_subject"
+      [(ngModel)]="fashion.fashion_subject"
+      required
+      maxlength="160"
+    />
+
+    <label for="style">Style</label>
+    <input
+      id="style"
+      name="style"
+      [(ngModel)]="fashion.style"
+      list="fashion-styles"
+      required
+      maxlength="80"
+    />
+    <datalist id="fashion-styles">
+      <option value="Street Style"></option>
+      <option value="Trends"></option>
+      <option value="Fashion"></option>
+    </datalist>
+
+    <label for="image">Thumbnail URL hoặc Data URL</label>
+    <input
+      id="image"
+      name="fashion_image"
+      [(ngModel)]="fashion.fashion_image"
+      required
+      placeholder="https://..."
+    />
+    @if (fashion.fashion_image) {
+      <img class="preview" [src]="fashion.fashion_image" alt="Fashion thumbnail preview" />
+    }
+
+    <label>Nội dung chi tiết</label>
+    <div class="editor-toolbar" aria-label="Định dạng nội dung">
+      <button type="button" (mousedown)="$event.preventDefault(); format('bold')"><strong>B</strong></button>
+      <button type="button" (mousedown)="$event.preventDefault(); format('italic')"><em>I</em></button>
+      <button type="button" (mousedown)="$event.preventDefault(); format('underline')"><u>U</u></button>
+      <button type="button" (mousedown)="$event.preventDefault(); format('insertUnorderedList')">• Danh sách</button>
+      <button type="button" (mousedown)="$event.preventDefault(); format('formatBlock', 'p')">Đoạn văn</button>
+    </div>
+    <div
+      class="editor"
+      contenteditable="true"
+      role="textbox"
+      aria-label="Nội dung chi tiết"
+      aria-multiline="true"
+      [innerHTML]="fashion.fashion_detail"
+      (input)="updateDetail($event)"
+    ></div>
+
+    <div class="buttons">
+      <a class="button secondary" routerLink="/">Hủy</a>
+      <button class="button primary" type="submit" [disabled]="fashionForm.invalid || saving()">
+        {{ saving() ? 'Đang lưu...' : 'Lưu Fashion' }}
+      </button>
+    </div>
+  </form>
+</section>

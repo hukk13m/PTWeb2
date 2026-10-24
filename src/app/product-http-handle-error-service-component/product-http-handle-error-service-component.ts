@@ -1,6 +1,11 @@
 import { Component, signal } from '@angular/core';
 import { Product } from '../classes/Iproduct';
 import { ProductHttpHandleErrorService } from '../services/product-http-handle-error-service';
+import { HttpErrorResponse } from '@angular/common/http';
+import { throwError } from 'rxjs/internal/observable/throwError';
+import { catchError } from 'rxjs/internal/operators/catchError';
+import { map } from 'rxjs/internal/operators/map';
+import { Observable } from 'rxjs/internal/Observable';
 
 @Component({
   selector: 'app-product-http-handle-error-service-component',
@@ -10,18 +15,35 @@ import { ProductHttpHandleErrorService } from '../services/product-http-handle-e
 })
 export class ProductHttpHandleErrorServiceComponent {
   products = signal<Product[]>([]);
-  errMessage = signal('');
+  errorMessage = signal('');
 
   constructor(private _service: ProductHttpHandleErrorService) {}
 
+  getProductList(): Observable<Product[]> {
+    return this._service
+      .getProductsList()
+      .pipe(catchError((error: HttpErrorResponse) => this.handleError(error)));
+  }
+
+  getProductById(id: number): Observable<Product | undefined> {
+    return this.getProductList().pipe(
+      map((products: Product[]) => products.find((p) => p.id === id)),
+      catchError((error: HttpErrorResponse) => this.handleError(error)),
+    );
+  }
+
   ngOnInit(): void {
-    this._service.getProductlist().subscribe({
-      next: (data: Product[]) => {
+    this.getProductList().subscribe({
+      next: (data) => {
         this.products.set(data);
       },
-      error: (err: any) => {
-        this.errMessage.set(err.message || 'Something went wrong');
+      error: (err: HttpErrorResponse) => {
+        this.errorMessage.set(err.message);
       },
     });
+  }
+
+  handleError(error: HttpErrorResponse): Observable<never> {
+    return throwError(() => new Error(error.message));
   }
 }

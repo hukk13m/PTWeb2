@@ -4,7 +4,11 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "start:admin-fashion": "ng serve admin-fashion",
+    "start:client-fashion": "ng serve client-fashion",
     "build": "ng build",
+    "build:admin-fashion": "ng build admin-fashion",
+    "build:client-fashion": "ng build client-fashion",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
@@ -17,6 +21,8 @@
     "@angular/forms": "^22.1.0",
     "@angular/platform-browser": "^22.1.0",
     "@angular/router": "^22.1.0",
+    "bootstrap": "^5.3.8",
+    "jquery": "^4.0.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0"
   },
@@ -28,5 +34,8 @@
     "prettier": "^3.8.1",
     "typescript": "~6.0.2",
     "vitest": "^4.0.8"
+  },
+  "allowScripts": {
+    "esbuild@0.28.2": true
   }
 }

@@ -1,0 +1,35 @@
+<h3 class="text-center text-white bg-dark p-3">Product List</h3>
+<div class="container">
+  <div class="row g-3">
+    @for (p of products(); track p.id) {
+      <div class="col-md-4">
+        <div class="card h-100">
+          <div class="img-container">
+            <div class="d-flex justify-content-between align-items-center p-2 first">
+              <span class="percent">-25%</span>
+              <button class="wishlist border-0" type="button" aria-label="Save product">
+                &#9825;
+              </button>
+            </div>
+            <div class="text-center">
+              <img [src]="p.image" [alt]="p.title" class="img-scale" />
+            </div>
+          </div>
+          <div class="product-detail-container">
+            <h6 class="mb-0 text-truncate" [title]="p.title">{{ p.title }}</h6>
+            <span class="text-danger fw-bold">${{ p.price }}</span>
+            <div class="d-flex justify-content-between mt-2">
+              <span class="ratings">{{ p.rating.rate }}</span>
+              <span class="count">Count: {{ p.rating.count }}</span>
+            </div>
+            <button class="btn btn-warning d-block w-100 text-white fw-bold mt-3" type="button">
+              Buy Now
+            </button>
+          </div>
+        </div>
+      </div>
+    } @empty {
+      <p class="text-center">{{ errMessage() || 'Loading products...' }}</p>
+    }
+  </div>
+</div>

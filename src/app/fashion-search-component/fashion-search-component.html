@@ -1,0 +1,61 @@
+<p>fashion-search-component works!</p>
+{{ errMessage() }}
+
+<div class="search-bar">
+  <input
+    type="text"
+    class="keyword-input"
+    name="keyword"
+    placeholder="Nhập từ khóa tìm kiếm..."
+    [(ngModel)]="keyword"
+    (keyup.enter)="search()"
+  />
+
+  <label for="searchField">Tìm theo:</label>
+  <select id="searchField" name="searchField" [(ngModel)]="searchField">
+    <option value="fashion_subject">Fashion Subject</option>
+    <option value="fashion_detail">Fashion Detail</option>
+  </select>
+
+  <label for="topN">Số lượng kết quả:</label>
+  <select id="topN" name="topN" [(ngModel)]="topN">
+    <option [ngValue]="5">5</option>
+    <option [ngValue]="10">10</option>
+    <option [ngValue]="20">20</option>
+    <option [ngValue]="50">50</option>
+    <option [ngValue]="0">Tất cả</option>
+  </select>
+
+  <button (click)="search()">Search</button>
+</div>
+
+@if (searched()) {
+  <p class="result-count">Tìm thấy {{ results().length }} kết quả</p>
+
+  <table border="1">
+    <thead>
+      <tr>
+        <td>Id</td>
+        <td>Style</td>
+        <td>Fashion Subject</td>
+        <td>Fashion Detail</td>
+        <td>Image</td>
+        <td>Jaccard Similarity</td>
+      </tr>
+    </thead>
+    <tbody>
+      @for (item of results(); track item.fashion._id) {
+        <tr [ngClass]="similarityClass(item.similarity)">
+          <td>{{ item.fashion._id }}</td>
+          <td>{{ item.fashion.style }}</td>
+          <td>{{ item.fashion.fashion_subject }}</td>
+          <td>{{ item.fashion.fashion_detail }}</td>
+          <td>
+            <img src="{{ item.fashion.fashion_image }}" width="100px" height="100px" />
+          </td>
+          <td class="similarity-value">{{ formatSimilarity(item.similarity) }}</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+}

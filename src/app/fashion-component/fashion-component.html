@@ -1,0 +1,41 @@
+<section class="fashion-page">
+  <header class="fashion-hero">
+    <p class="fashion-hero__eyebrow">Fashion Collection</p>
+    <h1 class="fashion-hero__title">Bộ sưu tập thời trang</h1>
+    <p class="fashion-hero__lede">
+      Khám phá những phong cách mới nhất. Chọn một thiết kế để xem chi tiết.
+    </p>
+  </header>
+
+  @if (errMessage()) {
+    <p class="fashion-alert">{{ errMessage() }}</p>
+  }
+
+  @if (loading()) {
+    <p class="fashion-empty">Đang tải bộ sưu tập…</p>
+  } @else if (!errMessage() && fashions().length === 0) {
+    <p class="fashion-empty">Chưa có Fashion nào trong bộ sưu tập.</p>
+  } @else {
+    <div class="fashion-grid">
+      @for (fashion of fashions(); track fashion._id) {
+        <a class="fashion-card" [routerLink]="['/fashion', slugOf(fashion)]">
+          <div class="fashion-card__media">
+            <img
+              [src]="fashion.getBase64String()"
+              [alt]="fashion.fashion_subject"
+              loading="lazy"
+              (error)="onImageError($event)"
+            />
+            <span class="fashion-card__idf">IdF {{ fashion.IdF }}</span>
+          </div>
+          <div class="fashion-card__body">
+            <span class="fashion-card__style">{{ fashion.style }}</span>
+            <h2 class="fashion-card__title">{{ fashion.fashion_subject }}</h2>
+            <p class="fashion-card__slug" [title]="slugOf(fashion)">{{ slugOf(fashion) }}</p>
+            <span class="fashion-card__cta">Xem chi tiết <span aria-hidden="true">→</span></span>
+          </div>
+        </a>
+      }
+    </div>
+  }
+</section>

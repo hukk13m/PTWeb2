@@ -28,5 +28,11 @@
     "name": "Chicken",
     "price": 999,
     "image": "https://cdn.phuckhangmobile.com/image/khach-hang-phuckhangmobile7-23421j.jpg"
+  },
+  {
+    "id": 6,
+    "name": "Mngulom",
+    "price": 66,
+    "image": "https://cdn.phuckhangmobile.com/image/khach-hang-phuckhangmobile7-23421j.jpg"
   }
 ]

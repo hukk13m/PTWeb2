@@ -1,0 +1,175 @@
+:host {
+  display: block;
+  min-height: 100vh;
+  background: #faf8f5;
+  color: #1f1b17;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+
+.fashion-page {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 64px 24px 96px;
+}
+
+.fashion-hero {
+  max-width: 620px;
+  margin-bottom: 48px;
+}
+
+.fashion-hero__eyebrow {
+  margin: 0 0 14px;
+  font-size: 11px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: #b08968;
+}
+
+.fashion-hero__title {
+  margin: 0 0 16px;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(34px, 4.4vw, 52px);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+}
+
+.fashion-hero__lede {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.7;
+  color: #6b625a;
+}
+
+.fashion-alert {
+  padding: 14px 18px;
+  border: 1px solid #e4c4c0;
+  border-radius: 4px;
+  background: #fdf4f3;
+  color: #9c3a30;
+  font-size: 14px;
+}
+
+.fashion-empty {
+  padding: 48px 0;
+  text-align: center;
+  color: #8a8078;
+  font-size: 15px;
+}
+
+.fashion-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 40px 28px;
+}
+
+.fashion-card {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: inherit;
+  background: #fff;
+  border: 1px solid #ece7e0;
+  border-radius: 6px;
+  overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.fashion-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 34px rgba(31, 27, 23, 0.09);
+}
+
+.fashion-card__media {
+  position: relative;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  background: #efeae3;
+}
+
+.fashion-card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.fashion-card:hover .fashion-card__media img {
+  transform: scale(1.04);
+}
+
+.fashion-card__idf {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  padding: 5px 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.9);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #4a4038;
+}
+
+.fashion-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 20px 20px 22px;
+}
+
+.fashion-card__style {
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #b08968;
+}
+
+.fashion-card__title {
+  margin: 0;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 19px;
+  font-weight: 400;
+  line-height: 1.35;
+}
+
+.fashion-card__slug {
+  margin: 0;
+  font-family: 'Courier New', monospace;
+  font-size: 11.5px;
+  color: #948a80;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.fashion-card__cta {
+  margin-top: 6px;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #1f1b17;
+  border-bottom: 1px solid transparent;
+  align-self: flex-start;
+  transition: border-color 0.2s ease;
+}
+
+.fashion-card:hover .fashion-card__cta {
+  border-color: #1f1b17;
+}
+
+@media (max-width: 640px) {
+  .fashion-page {
+    padding: 40px 16px 64px;
+  }
+
+  .fashion-hero {
+    margin-bottom: 32px;
+  }
+
+  .fashion-grid {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 24px 16px;
+  }
+}

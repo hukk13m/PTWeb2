@@ -1,0 +1,22 @@
+[
+  {
+    "context": ["/products", "/products/**"],
+    "target": "https://fakestoreapi.com",
+    "secure": true,
+    "changeOrigin": true,
+    "logLevel": "debug"
+  },
+  {
+    "context": ["/books", "/books/**"],
+    "target": "http://localhost:3000",
+    "secure": false,
+    "changeOrigin": true
+  },
+  {
+    "context": ["/fashions"],
+    "target": "http://localhost:4000",
+    "secure": true,
+    "changeOrigin": true,
+    "logLevel": "debug"
+  }
+]

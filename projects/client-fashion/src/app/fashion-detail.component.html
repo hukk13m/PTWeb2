@@ -1,0 +1,16 @@
+<a class="back" routerLink="/">← Tất cả Fashion</a>
+@if (loading()) {
+  <p class="notice">Đang tải...</p>
+} @else if (error()) {
+  <p class="notice error">{{ error() }}</p>
+} @else if (fashion(); as item) {
+  <article>
+    <img class="cover" [src]="item.fashion_image" [alt]="item.fashion_subject" />
+    <div class="article-content">
+      <span class="style">{{ item.style }}</span>
+      <h1>{{ item.fashion_subject }}</h1>
+      <p class="date">{{ item.created_at | date: 'longDate' }}</p>
+      <div class="rich-content" [innerHTML]="item.fashion_detail"></div>
+    </div>
+  </article>
+}

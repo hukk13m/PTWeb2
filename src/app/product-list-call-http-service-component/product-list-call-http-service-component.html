@@ -3,7 +3,7 @@
     <tr>
       <th>ID</th>
       <th>NAME</th>
-      <TH>PRICE</TH>
+      <th>PRICE</th>
       <th>IMAGE</th>
     </tr>
   </thead>
@@ -14,13 +14,20 @@
           {{ p.id }}
         </td>
         <td>
-          {{ p.name }}
+          <a [routerLink]="['/products', p.id]">{{ p.name }}</a>
         </td>
         <td>
           {{ p.price }}
         </td>
         <td>
-          <img [src]="p.image" [alt]="p.name" width="100" height="100" />
+          <a [routerLink]="['/products', p.id]"
+            ><img
+              [src]="p.image"
+              [alt]="p.name"
+              width="100"
+              height="100"
+              (error)="$any($event.target).src = 'https://placehold.co/100x100?text=No+Image'"
+          /></a>
         </td>
       </tr>
     } @empty {

@@ -1,0 +1,59 @@
+<section class="detail-page">
+  <nav class="detail-crumb" aria-label="Breadcrumb">
+    <a routerLink="/fashion">Fashion Collection</a>
+    <span aria-hidden="true">/</span>
+    <span>Chi tiết</span>
+  </nav>
+
+  @if (loading()) {
+    <p class="detail-state">Đang tải thông tin Fashion…</p>
+  } @else if (errMessage()) {
+    <div class="detail-state detail-state--empty">
+      <h1>Không tìm thấy sản phẩm</h1>
+      <p>Slug “{{ slug() }}” không khớp với Fashion nào trong bộ sưu tập.</p>
+      <button type="button" class="detail-button" (click)="goBack()">Quay về Fashion List</button>
+    </div>
+  } @else if (fashion(); as item) {
+    <article class="detail-layout">
+      <div class="detail-media">
+        <img
+          [src]="item.getBase64String()"
+          [alt]="item.fashion_subject"
+          (error)="onImageError($event)"
+        />
+      </div>
+
+      <div class="detail-info">
+        <p class="detail-info__style">{{ item.style }}</p>
+        <h1 class="detail-info__title">{{ item.fashion_subject }}</h1>
+
+        <dl class="detail-meta">
+          <div class="detail-meta__row">
+            <dt>IdF</dt>
+            <dd>{{ item.IdF }}</dd>
+          </div>
+          <div class="detail-meta__row">
+            <dt>Slug</dt>
+            <dd><code>{{ slug() }}</code></dd>
+          </div>
+          <div class="detail-meta__row">
+            <dt>Ngày tạo</dt>
+            <dd>{{ item.created_at | date: 'dd/MM/yyyy' }}</dd>
+          </div>
+        </dl>
+
+        <div class="detail-description">
+          @if (item.fashion_detail) {
+            <div [innerHTML]="item.fashion_detail"></div>
+          } @else {
+            <p>Fashion này chưa có mô tả.</p>
+          }
+        </div>
+
+        <button type="button" class="detail-button" (click)="goBack()">
+          <span aria-hidden="true">←</span> Quay về Fashion List
+        </button>
+      </div>
+    </article>
+  }
+</section>

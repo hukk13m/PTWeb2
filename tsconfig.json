@@ -26,6 +26,12 @@
     },
     {
       "path": "./tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/admin-fashion/tsconfig.app.json"
+    },
+    {
+      "path": "./projects/client-fashion/tsconfig.app.json"
     }
   ]
 }

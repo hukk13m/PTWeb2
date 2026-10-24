@@ -1,0 +1,124 @@
+.back {
+  display: inline-block;
+  margin-bottom: 16px;
+  color: #424951;
+  text-decoration: none;
+}
+
+.panel {
+  max-width: 760px;
+  padding: 28px;
+  border: 1px solid #e2e4e7;
+  border-radius: 9px;
+  background: white;
+}
+
+h1 {
+  margin: 0 0 24px;
+}
+
+.eyebrow {
+  margin: 0 0 7px;
+  color: #707780;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+form {
+  display: grid;
+  gap: 9px;
+}
+
+label {
+  margin-top: 10px;
+  font-weight: 700;
+}
+
+input {
+  width: 100%;
+  min-height: 42px;
+  padding: 9px 11px;
+  border: 1px solid #cbd0d6;
+  border-radius: 5px;
+  font: inherit;
+}
+
+.preview {
+  width: 160px;
+  height: 110px;
+  border-radius: 5px;
+  object-fit: cover;
+}
+
+.editor-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 8px;
+  border: 1px solid #cbd0d6;
+  border-bottom: 0;
+  border-radius: 5px 5px 0 0;
+  background: #f6f7f8;
+}
+
+.editor-toolbar button {
+  padding: 6px 9px;
+  border: 1px solid #d5d9de;
+  border-radius: 4px;
+  background: white;
+  cursor: pointer;
+}
+
+.editor {
+  min-height: 220px;
+  padding: 12px;
+  border: 1px solid #cbd0d6;
+  border-radius: 0 0 5px 5px;
+  line-height: 1.6;
+}
+
+.editor:focus {
+  outline: 2px solid #8bb6e8;
+}
+
+.buttons {
+  display: flex;
+  justify-content: end;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.button {
+  padding: 10px 14px;
+  border: 0;
+  border-radius: 5px;
+  font: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.primary {
+  color: white;
+  background: #b73535;
+}
+
+.primary:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+.secondary {
+  color: #292d32;
+  background: #eceef0;
+}
+
+.notice {
+  padding: 12px;
+  border-radius: 5px;
+}
+
+.error {
+  color: #b42318;
+  background: #fff0ee;
+}

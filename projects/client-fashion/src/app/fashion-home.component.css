@@ -1,0 +1,143 @@
+.hero {
+  padding: 32px 20px 36px;
+  text-align: center;
+}
+
+.eyebrow {
+  color: #947b59;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+}
+
+h1,
+h2,
+h3 {
+  font-family: Georgia, serif;
+}
+
+h1 {
+  margin: 10px 0;
+  font-size: clamp(32px, 5vw, 54px);
+  font-weight: 400;
+}
+
+.intro {
+  margin: 0 auto 22px;
+  color: #706c66;
+}
+
+.filter-label {
+  margin-right: 10px;
+  font-size: 14px;
+}
+
+select {
+  min-width: 190px;
+  padding: 9px 12px;
+  border: 1px solid #cbc5bb;
+  border-radius: 3px;
+  background: #fff;
+  font: inherit;
+}
+
+.style-section {
+  margin-top: 28px;
+}
+
+.section-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+  border-bottom: 1px solid #d9d3ca;
+}
+
+.section-title h2 {
+  margin: 0;
+  padding-bottom: 9px;
+  font-size: 25px;
+  font-weight: 400;
+}
+
+.section-title span {
+  color: #88827a;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+}
+
+.fashion-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.fashion-card {
+  overflow: hidden;
+  color: inherit;
+  background: white;
+  text-decoration: none;
+  transition: transform 160ms ease, box-shadow 160ms ease;
+}
+
+.fashion-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px #20202018;
+}
+
+.fashion-card img {
+  display: block;
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  background: #eae7e2;
+}
+
+.card-copy {
+  padding: 14px;
+}
+
+.card-style {
+  color: #947b59;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.card-copy h3 {
+  min-height: 48px;
+  margin: 8px 0 14px;
+  font-size: 18px;
+  line-height: 1.35;
+}
+
+.read-more {
+  color: #706c66;
+  font-size: 13px;
+}
+
+.notice {
+  padding: 18px;
+  text-align: center;
+}
+
+.error {
+  color: #b42318;
+  background: #fff0ee;
+}
+
+@media (max-width: 560px) {
+  .fashion-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .fashion-card img {
+    height: 180px;
+  }
+
+  .card-copy {
+    padding: 10px;
+  }
+}

@@ -1,0 +1,15 @@
+<a class="back" routerLink="/">← Quay lại danh sách</a>
+@if (error()) {
+  <p class="notice error">{{ error() }}</p>
+} @else if (fashion(); as item) {
+  <article class="panel">
+    <img class="cover" [src]="item.fashion_image" [alt]="item.fashion_subject" />
+    <div class="content">
+      <span class="style-tag">{{ item.style }}</span>
+      <h1>{{ item.fashion_subject }}</h1>
+      <p class="muted">Ngày tạo: {{ item.created_at | date: 'fullDate' }}</p>
+      <div class="rich-content" [innerHTML]="item.fashion_detail"></div>
+      <a class="button" [routerLink]="['/', item._id, 'edit']">Sửa Fashion</a>
+    </div>
+  </article>
+}

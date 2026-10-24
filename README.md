@@ -1,5 +1,29 @@
 # MyApp
 
+Bài tập **Slug Fashion** (Angular + Express + MongoDB).
+
+- Giao diện: `http://localhost:4200/fashion`
+- Tài liệu chi tiết về IdF, Slug, API và cách chạy: [`SLUG_FASHION.md`](./SLUG_FASHION.md)
+- API và dữ liệu mẫu: thư mục [`server/`](./server)
+
+## Chạy nhanh
+
+```powershell
+# Terminal 1: API (cổng 4000)
+cd server
+npm install
+npm run import:data   # nạp 16 Fashion mẫu, chỉ chạy khi database đang rỗng
+npm start
+
+# Terminal 2: Angular (cổng 4200)
+npm install
+npm start
+```
+
+Mở `http://localhost:4200/fashion`.
+
+---
+
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.1.7.
 
 ## Development server
